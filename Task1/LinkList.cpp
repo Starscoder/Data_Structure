@@ -28,6 +28,7 @@ public:
     void editByIndex(int,int);   //根据索引修改节点的值
     void print();
     void reverse();
+    Node* findHalfNode();
 private:
     Node* head;        //头节点指针,value用于存放链表的长度
 };
@@ -178,7 +179,19 @@ void LinkList::reverse() {
     mid->next = pre;       //因为循环体中是在有第三个中最后的节点的情况下处理，所以最后要处理一下没有最后的节点
     head->next = mid;      //头节点指向原末尾的节点
 }
-
+Node* LinkList::findHalfNode() {
+    if (head->next == NULL) {
+        cout << "该链表没有节点，无法找到中间节点！" << endl;
+        return NULL;
+    }
+    Node* first = head->next->next;
+    Node* second = head->next;
+    while (first&&first->next) {
+        first = first->next->next;
+        second = second->next;
+    }
+    return second;
+}
 void printAnswer(LinkList linklist) {
     linklist.print();
     cout << "当前长度：";
