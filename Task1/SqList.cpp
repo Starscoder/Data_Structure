@@ -2,7 +2,7 @@
 //  顺序表.cpp
 //  VOJ编程
 //
-//  Created by Mac on 2018/7/17.
+//  Created by Mac on 2019/8/5.
 //  Copyright © 2018年 Mac. All rights reserved.
 //
 
