@@ -1,0 +1,55 @@
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+    
+    
+    int len = nums.size();
+    vector<vector<int>> ret;
+    map<int, bool> his;
+    sort(nums.begin(), nums.end()); //将数列按升序排序
+
+    for(int i = 0; i <len; i++)
+    {
+        //依次遍历整个数组，对撞指针，现将最左端和最右端与第i个相加，如果为0则加入动态vector中作为结果，小于0则左边指针右移，大于则右边指针左移
+
+        if(nums[i] > 0)break;       //如果最小数都大于0则退出
+        if(his.count(nums[i]) > 0) continue;
+        his.insert(map<int, bool>::value_type(nums[i], true));
+        
+        int lptr = i + 1;
+        int rptr = len - 1;
+        
+        while (lptr < rptr)
+        {
+            if(nums[lptr] + nums[rptr] + nums[i] == 0) 
+            {
+                ret.push_back({nums[i], nums[lptr], nums[rptr]});
+                do
+                {
+                    rptr--;
+                } while (nums[rptr+1] == nums[rptr] && rptr > lptr);                    
+                do
+                {
+                    lptr++;
+                } while (nums[lptr-1] == nums[lptr] && rptr > lptr);
+            }
+            else if(nums[lptr] + nums[rptr] + nums[i] >0)
+            {
+                do
+                {
+                    rptr--;
+                } while (nums[rptr+1] == nums[rptr] && rptr > lptr);
+            }else
+            {
+                do
+                {
+                    lptr++;
+                } while (nums[lptr-1] == nums[lptr] && rptr > lptr);
+            }
+        }
+        
+    }
+    return ret;
+
+}
+};
