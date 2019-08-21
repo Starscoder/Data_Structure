@@ -1,4 +1,4 @@
-/*Dijkstra求单源最短路径 2010.8.26*/
+//https://www.cnblogs.com/dolphin0520/archive/2011/08/26/2155202.html
  
 #include <iostream>
 #include<stack>
